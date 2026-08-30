@@ -45,9 +45,9 @@ const PHRASE_DATA = {
     {
       "id": "sorryApology",
       "category": "essentials",
-      "hanzi": "对不起",
-      "pinyin": "duì bu qǐ",
-      "phonetic": "dway-boo-chee",
+      "hanzi": "抱歉",
+      "pinyin": "bào qiàn",
+      "phonetic": "bow-chyen",
       "english": "Sorry",
       "note": "For actual mistakes rather than passing politeness.",
       "showOnScreen": false
