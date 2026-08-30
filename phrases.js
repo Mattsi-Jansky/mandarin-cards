@@ -112,9 +112,9 @@ const PHRASE_DATA = {
     {
       "id": "noMeatNoFish",
       "category": "dietary",
-      "hanzi": "我不吃肉，不吃鱼",
-      "pinyin": "wǒ bù chī ròu, bù chī yú",
-      "phonetic": "wor boo chir roh, boo chir yoo",
+      "hanzi": "我不吃肉和鱼",
+      "pinyin": "wǒ bù chī ròu hé yú",
+      "phonetic": "wor boo chir roh huh yoo",
       "english": "I don't eat meat or fish",
       "showOnScreen": true
     },
