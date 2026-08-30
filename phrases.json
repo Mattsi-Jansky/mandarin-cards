@@ -1,0 +1,221 @@
+{
+  "meta": {
+    "title": "Travel Mandarin Phrasebook",
+    "language": "zh-CN",
+    "phoneticStyle": "english-approximation",
+    "note": "Phonetic spellings favour ease of pronunciation over tonal accuracy. Phrases marked showOnScreen are best displayed rather than spoken."
+  },
+  "categories": [
+    { "id": "essentials", "label": "Essentials" },
+    { "id": "introductions", "label": "Introducing yourself" },
+    { "id": "dietary", "label": "Vegetarian" },
+    { "id": "dining", "label": "At the table" },
+    { "id": "outAndAbout", "label": "Out and about" }
+  ],
+  "phrases": [
+    {
+      "id": "hello",
+      "category": "essentials",
+      "hanzi": "你好",
+      "pinyin": "nǐ hǎo",
+      "phonetic": "nee how",
+      "english": "Hello",
+      "showOnScreen": false
+    },
+    {
+      "id": "thankYou",
+      "category": "essentials",
+      "hanzi": "谢谢",
+      "pinyin": "xiè xie",
+      "phonetic": "shyeh-shyeh",
+      "english": "Thank you",
+      "showOnScreen": false
+    },
+    {
+      "id": "excuseMe",
+      "category": "essentials",
+      "hanzi": "不好意思",
+      "pinyin": "bù hǎo yì si",
+      "phonetic": "boo how yee-suh",
+      "english": "Sorry / excuse me",
+      "note": "Covers almost every minor social situation. Default to this one.",
+      "showOnScreen": false
+    },
+    {
+      "id": "sorryApology",
+      "category": "essentials",
+      "hanzi": "对不起",
+      "pinyin": "duì bu qǐ",
+      "phonetic": "dway-boo-chee",
+      "english": "Sorry",
+      "note": "For actual mistakes rather than passing politeness.",
+      "showOnScreen": false
+    },
+    {
+      "id": "thisOne",
+      "category": "essentials",
+      "hanzi": "这个",
+      "pinyin": "zhè ge",
+      "phonetic": "juh-guh",
+      "english": "This one",
+      "note": "Use with pointing. The single most useful phrase on this list.",
+      "showOnScreen": false
+    },
+    {
+      "id": "noChinese",
+      "category": "essentials",
+      "hanzi": "我不会说中文",
+      "pinyin": "wǒ bú huì shuō zhōng wén",
+      "phonetic": "wor boo hway shwor jong-wun",
+      "english": "I don't speak Chinese",
+      "showOnScreen": true
+    },
+    {
+      "id": "dontUnderstand",
+      "category": "essentials",
+      "hanzi": "听不懂",
+      "pinyin": "tīng bu dǒng",
+      "phonetic": "ting boo dong",
+      "english": "I don't understand",
+      "showOnScreen": false
+    },
+    {
+      "id": "myNameIs",
+      "category": "introductions",
+      "hanzi": "我叫 {name}",
+      "pinyin": "wǒ jiào {name}",
+      "phonetic": "wor jyow {name}",
+      "english": "I'm called {name}",
+      "showOnScreen": false
+    },
+    {
+      "id": "niceToMeetYou",
+      "category": "introductions",
+      "hanzi": "很高兴认识你",
+      "pinyin": "hěn gāo xìng rèn shi nǐ",
+      "phonetic": "hun gow-shing run-shir nee",
+      "english": "Nice to meet you",
+      "note": "Worth practising properly before meeting the parents.",
+      "showOnScreen": false
+    },
+    {
+      "id": "vegetarian",
+      "category": "dietary",
+      "hanzi": "我吃素",
+      "pinyin": "wǒ chī sù",
+      "phonetic": "wor chir soo",
+      "english": "I eat vegetarian",
+      "note": "The key phrase. Carries Buddhist associations, so it reads as a commitment rather than a preference.",
+      "showOnScreen": true
+    },
+    {
+      "id": "noMeatNoFish",
+      "category": "dietary",
+      "hanzi": "我不吃肉，不吃鱼",
+      "pinyin": "wǒ bù chī ròu, bù chī yú",
+      "phonetic": "wor boo chir roh, boo chir yoo",
+      "english": "I don't eat meat or fish",
+      "showOnScreen": true
+    },
+    {
+      "id": "doesThisHaveMeat",
+      "category": "dietary",
+      "hanzi": "这个有肉吗？",
+      "pinyin": "zhè ge yǒu ròu ma?",
+      "phonetic": "juh-guh yo roh ma?",
+      "english": "Does this have meat in it?",
+      "showOnScreen": true
+    },
+    {
+      "id": "anyVegetarianDishes",
+      "category": "dietary",
+      "hanzi": "有素菜吗？",
+      "pinyin": "yǒu sù cài ma?",
+      "phonetic": "yo soo-tsai ma?",
+      "english": "Do you have vegetarian dishes?",
+      "showOnScreen": true
+    },
+    {
+      "id": "oneBeer",
+      "category": "dining",
+      "hanzi": "一瓶啤酒，谢谢",
+      "pinyin": "yì píng pí jiǔ, xiè xie",
+      "phonetic": "ee ping pee-jyoh, shyeh-shyeh",
+      "english": "One bottle of beer, please",
+      "showOnScreen": false
+    },
+    {
+      "id": "cheers",
+      "category": "dining",
+      "hanzi": "干杯",
+      "pinyin": "gān bēi",
+      "phonetic": "gan-bay",
+      "english": "Cheers",
+      "showOnScreen": false
+    },
+    {
+      "id": "noAlcohol",
+      "category": "dining",
+      "hanzi": "我不喝酒",
+      "pinyin": "wǒ bù hē jiǔ",
+      "phonetic": "wor boo huh jyoh",
+      "english": "I don't drink alcohol",
+      "note": "Useful when baijiu appears.",
+      "showOnScreen": true
+    },
+    {
+      "id": "delicious",
+      "category": "dining",
+      "hanzi": "很好吃",
+      "pinyin": "hěn hǎo chī",
+      "phonetic": "hun how-chir",
+      "english": "Delicious",
+      "showOnScreen": false
+    },
+    {
+      "id": "imFull",
+      "category": "dining",
+      "hanzi": "我饱了",
+      "pinyin": "wǒ bǎo le",
+      "phonetic": "wor bow luh",
+      "english": "I'm full",
+      "showOnScreen": false
+    },
+    {
+      "id": "thatsEnough",
+      "category": "dining",
+      "hanzi": "够了，谢谢",
+      "pinyin": "gòu le, xiè xie",
+      "phonetic": "go luh, shyeh-shyeh",
+      "english": "That's enough, thank you",
+      "showOnScreen": false
+    },
+    {
+      "id": "howMuch",
+      "category": "outAndAbout",
+      "hanzi": "多少钱？",
+      "pinyin": "duō shao qián?",
+      "phonetic": "dwor-shaow chyen?",
+      "english": "How much?",
+      "showOnScreen": false
+    },
+    {
+      "id": "theBill",
+      "category": "outAndAbout",
+      "hanzi": "买单",
+      "pinyin": "mǎi dān",
+      "phonetic": "my-dan",
+      "english": "The bill",
+      "showOnScreen": false
+    },
+    {
+      "id": "whereIsToilet",
+      "category": "outAndAbout",
+      "hanzi": "洗手间在哪里？",
+      "pinyin": "xǐ shǒu jiān zài nǎ lǐ?",
+      "phonetic": "shee-show-jyen dzai na-lee?",
+      "english": "Where is the toilet?",
+      "showOnScreen": true
+    }
+  ]
+}

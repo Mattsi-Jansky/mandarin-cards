@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mandarin Flashcards</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="app">
+
+  <section id="start" class="screen">
+    <h1>Mandarin Flashcards</h1>
+    <p class="lede">
+      You'll see the English phrase first. Try to recall the Chinese, then flip
+      the card to check the pinyin and the phonetic spelling. Anything you get
+      wrong comes back at the end of the round until you get it right.
+    </p>
+    <label class="field">
+      Your name (used in "I'm called&nbsp;…")
+      <input id="name-input" type="text" placeholder="e.g. Matt" autocomplete="given-name">
+    </label>
+    <fieldset class="field">
+      <legend>Categories</legend>
+      <div id="category-list" class="categories"></div>
+    </fieldset>
+    <button id="start-btn" class="btn btn-primary" type="button">Start</button>
+  </section>
+
+  <section id="round" class="screen" hidden>
+    <header class="status">
+      <span id="progress"></span>
+      <span id="tally"></span>
+    </header>
+
+    <article class="card">
+      <p id="card-category" class="card-category"></p>
+
+      <div class="card-face">
+        <p class="label">English</p>
+        <p id="card-english" class="english"></p>
+      </div>
+
+      <div id="answer" class="card-face answer" hidden>
+        <p class="label">Chinese</p>
+        <p id="card-hanzi" class="hanzi" lang="zh-CN"></p>
+        <p class="label">Pinyin</p>
+        <p id="card-pinyin" class="pinyin"></p>
+        <p class="label">Phonetic</p>
+        <p id="card-phonetic" class="phonetic"></p>
+        <p id="card-note" class="note" hidden></p>
+        <p id="card-screen-hint" class="note" hidden>Best shown on screen rather than spoken.</p>
+      </div>
+    </article>
+
+    <div class="controls">
+      <button id="flip-btn" class="btn btn-primary" type="button">Show answer</button>
+      <div id="grade" class="grade" hidden>
+        <button id="wrong-btn" class="btn btn-wrong" type="button">Got it wrong</button>
+        <button id="right-btn" class="btn btn-right" type="button">Got it right</button>
+      </div>
+    </div>
+
+    <p class="hint">Space or Enter flips &middot; 1 = wrong &middot; 2 = right</p>
+    <button id="quit-btn" class="btn btn-quiet" type="button">End round</button>
+  </section>
+
+  <section id="done" class="screen" hidden>
+    <h1>Round complete</h1>
+    <p id="summary" class="lede"></p>
+    <ul id="missed-list" class="missed"></ul>
+    <button id="again-btn" class="btn btn-primary" type="button">Go again</button>
+  </section>
+
+</main>
+<script src="phrases.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
