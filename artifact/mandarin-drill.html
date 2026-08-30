@@ -1,0 +1,917 @@
+<title>Travel Mandarin Drill</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Serif+SC:wght@400;500&family=Spectral:wght@500;600&display=swap">
+<style>
+  :root {
+    --paper: #e9eae4;
+    --card: #fbfbf9;
+    --ink: #1b1d1c;
+    --ink-soft: #61665f;
+    --rule: #d2d4cb;
+    --grid: #c9ccc0;
+    --seal: #b23a2e;
+    --jade: #2e6b58;
+
+    --serif: "Spectral", Georgia, "Times New Roman", serif;
+    --sans: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+    --han: "Noto Serif SC", "Songti SC", "SimSun", serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #171917;
+      --card: #1f2220;
+      --ink: #e8e9e4;
+      --ink-soft: #9aa096;
+      --rule: #343833;
+      --grid: #3d423b;
+      --seal: #d9705f;
+      --jade: #6fb79a;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #171917;
+    --card: #1f2220;
+    --ink: #e8e9e4;
+    --ink-soft: #9aa096;
+    --rule: #343833;
+    --grid: #3d423b;
+    --seal: #d9705f;
+    --jade: #6fb79a;
+  }
+
+  * { box-sizing: border-box; }
+
+  [hidden] { display: none !important; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .shell {
+    max-width: 34rem;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 4rem;
+  }
+
+  .screen { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  h1 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 1.15;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  .masthead { display: flex; flex-direction: column; gap: 0.75rem; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .lede {
+    margin: 0;
+    max-width: 32em;
+    color: var(--ink-soft);
+  }
+
+  .setup { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .field { display: flex; flex-direction: column; gap: 0.5rem; border: 0; padding: 0; margin: 0; }
+
+  .field-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding: 0;
+  }
+
+  #name-input {
+    font: 400 1rem/1.5 var(--sans);
+    color: var(--ink);
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 0.65rem 0.75rem;
+    width: 100%;
+  }
+
+  #name-input::placeholder { color: var(--ink-soft); }
+
+  .decks { display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .deck {
+    display: flex;
+    align-items: baseline;
+    gap: 0.65rem;
+    padding: 0.55rem 0.75rem;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    cursor: pointer;
+  }
+
+  .deck input { accent-color: var(--ink); margin: 0; }
+  .deck .count { margin-left: auto; font-family: var(--mono); font-size: 0.8rem; color: var(--ink-soft); }
+  .deck:has(input:focus-visible) { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+  .btn {
+    font: 500 0.95rem/1 var(--sans);
+    padding: 0.85rem 1.1rem;
+    border-radius: 2px;
+    border: 1px solid var(--rule);
+    background: var(--card);
+    color: var(--ink);
+    cursor: pointer;
+  }
+
+  .btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .btn:hover { border-color: var(--ink-soft); }
+
+  .btn-primary {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--paper);
+    font-weight: 600;
+  }
+
+  .btn-primary:hover { border-color: var(--ink); }
+  .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .btn-wide { width: 100%; }
+
+  .btn-miss { color: var(--seal); border-color: var(--seal); }
+  .btn-hit { color: var(--jade); border-color: var(--jade); }
+  .btn-miss:hover, .btn-hit:hover { border-color: currentColor; }
+
+  .btn-quiet {
+    align-self: center;
+    border: 0;
+    background: none;
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    padding: 0.35rem;
+    cursor: pointer;
+  }
+
+  .meter {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    color: var(--ink-soft);
+    font-variant-numeric: tabular-nums;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0.6rem;
+  }
+
+  .scores { display: flex; gap: 0.9rem; }
+  .score-hit { color: var(--jade); }
+  .score-miss { color: var(--seal); }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 1.75rem 1.5rem;
+    min-height: 19rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .prompt { display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .english {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.85rem;
+    line-height: 1.2;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  .answer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    border-top: 1px solid var(--rule);
+    padding-top: 1.25rem;
+  }
+
+  /* Characters sit in tianzige practice cells - the squared grid Chinese
+     handwriting is drilled on. One cell per character, wrapping as needed. */
+  .glyphs { display: flex; flex-wrap: wrap; gap: 5px; }
+
+  .cell {
+    position: relative;
+    width: 3.2rem;
+    height: 3.2rem;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--grid);
+    font-family: var(--han);
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  .cell::before, .cell::after { content: ""; position: absolute; }
+  .cell::before { top: 0; bottom: 0; left: 50%; border-left: 1px dashed var(--grid); }
+  .cell::after { left: 0; right: 0; top: 50%; border-top: 1px dashed var(--grid); }
+
+  .cell-plain { border-color: transparent; width: auto; min-width: 1.4rem; padding: 0 0.35rem; }
+  .cell-plain::before, .cell-plain::after { display: none; }
+  .cell-latin { font-family: var(--serif); font-size: 1.5rem; }
+
+  .readings { display: flex; flex-direction: column; gap: 0.9rem; }
+  .reading { display: flex; flex-direction: column; gap: 0.15rem; }
+  .pinyin { font-family: var(--serif); font-size: 1.35rem; margin: 0; }
+  .phonetic { font-family: var(--sans); font-size: 1.25rem; margin: 0; }
+
+  .footnotes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-top: 1px solid var(--rule);
+    padding-top: 0.9rem;
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+  }
+
+  .footnotes p { margin: 0; }
+  .footnotes .flag { color: var(--seal); }
+
+  .controls { display: flex; flex-direction: column; gap: 0.75rem; }
+  .grade { display: flex; gap: 0.75rem; }
+  .grade .btn { flex: 1; font-weight: 600; }
+
+  .keys {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+    text-align: center;
+    margin: 0;
+  }
+
+  .recap { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+
+  .recap li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25rem 0.75rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .recap li:first-child { border-top: 1px solid var(--rule); }
+  .recap .en { font-family: var(--serif); font-size: 1.05rem; }
+  .recap .zh { font-family: var(--han); }
+  .recap .rd { color: var(--ink-soft); font-size: 0.9rem; width: 100%; }
+
+  @media (max-width: 26rem) {
+    .english { font-size: 1.55rem; }
+    .cell { width: 2.8rem; height: 2.8rem; font-size: 1.7rem; }
+    .grade { flex-direction: column; }
+  }
+</style>
+
+<main class="shell">
+
+  <section id="start" class="screen">
+    <div class="masthead">
+      <p class="eyebrow">Travel phrasebook &middot; 22 phrases</p>
+      <h1>Recall it before you flip it</h1>
+      <p class="lede">
+        The English shows first. Say the Chinese out loud, then turn the card over
+        to check the characters, the pinyin and a rough English spelling. Whatever
+        you miss comes back at the end of the round, and keeps coming back until
+        you get it.
+      </p>
+    </div>
+
+    <div class="setup">
+      <label class="field">
+        <span class="field-label">Your name &mdash; for the &ldquo;I&rsquo;m called&hellip;&rdquo; card</span>
+        <input id="name-input" type="text" placeholder="Leave blank to skip" autocomplete="given-name">
+      </label>
+
+      <fieldset class="field">
+        <legend class="field-label">Decks</legend>
+        <div id="deck-list" class="decks"></div>
+      </fieldset>
+
+      <button id="start-btn" class="btn btn-primary btn-wide" type="button">Start the round</button>
+    </div>
+  </section>
+
+  <section id="round" class="screen" hidden>
+    <div class="meter">
+      <span id="progress"></span>
+      <span class="scores">
+        <span class="score-hit">Got <span id="score-hit">0</span></span>
+        <span class="score-miss">Missed <span id="score-miss">0</span></span>
+      </span>
+    </div>
+
+    <article class="card">
+      <div class="prompt">
+        <p id="card-deck" class="eyebrow"></p>
+        <p id="card-english" class="english"></p>
+      </div>
+
+      <div id="answer" class="answer" hidden>
+        <div id="card-glyphs" class="glyphs" lang="zh-CN"></div>
+        <div class="readings">
+          <div class="reading">
+            <span class="eyebrow">Pinyin</span>
+            <p id="card-pinyin" class="pinyin"></p>
+          </div>
+          <div class="reading">
+            <span class="eyebrow">Sounds like</span>
+            <p id="card-phonetic" class="phonetic"></p>
+          </div>
+        </div>
+        <div id="footnotes" class="footnotes" hidden>
+          <p id="card-note" hidden></p>
+          <p id="card-flag" class="flag" hidden>Better shown on screen than spoken.</p>
+        </div>
+      </div>
+    </article>
+
+    <div class="controls">
+      <button id="flip-btn" class="btn btn-primary btn-wide" type="button">Show the answer</button>
+      <div id="grade" class="grade" hidden>
+        <button id="miss-btn" class="btn btn-miss" type="button">Missed it</button>
+        <button id="hit-btn" class="btn btn-hit" type="button">Got it</button>
+      </div>
+      <p class="keys">SPACE flips &middot; 1 missed &middot; 2 got it</p>
+    </div>
+
+    <button id="quit-btn" class="btn-quiet" type="button">End the round here</button>
+  </section>
+
+  <section id="done" class="screen" hidden>
+    <div class="masthead">
+      <p class="eyebrow">Round complete</p>
+      <h1 id="verdict"></h1>
+      <p id="summary" class="lede"></p>
+    </div>
+    <ul id="recap" class="recap"></ul>
+    <button id="again-btn" class="btn btn-primary btn-wide" type="button">Shuffle and go again</button>
+  </section>
+
+</main>
+
+<script>
+(function () {
+  'use strict';
+
+  var DATA = {
+  "meta": {
+    "title": "Travel Mandarin Phrasebook",
+    "language": "zh-CN",
+    "phoneticStyle": "english-approximation",
+    "note": "Phonetic spellings favour ease of pronunciation over tonal accuracy. Phrases marked showOnScreen are best displayed rather than spoken."
+  },
+  "categories": [
+    {
+      "id": "essentials",
+      "label": "Essentials"
+    },
+    {
+      "id": "introductions",
+      "label": "Introducing yourself"
+    },
+    {
+      "id": "dietary",
+      "label": "Vegetarian"
+    },
+    {
+      "id": "dining",
+      "label": "At the table"
+    },
+    {
+      "id": "outAndAbout",
+      "label": "Out and about"
+    }
+  ],
+  "phrases": [
+    {
+      "id": "hello",
+      "category": "essentials",
+      "hanzi": "你好",
+      "pinyin": "nǐ hǎo",
+      "phonetic": "nee how",
+      "english": "Hello",
+      "showOnScreen": false
+    },
+    {
+      "id": "thankYou",
+      "category": "essentials",
+      "hanzi": "谢谢",
+      "pinyin": "xiè xie",
+      "phonetic": "shyeh-shyeh",
+      "english": "Thank you",
+      "showOnScreen": false
+    },
+    {
+      "id": "excuseMe",
+      "category": "essentials",
+      "hanzi": "不好意思",
+      "pinyin": "bù hǎo yì si",
+      "phonetic": "boo how yee-suh",
+      "english": "Sorry / excuse me",
+      "note": "Covers almost every minor social situation. Default to this one.",
+      "showOnScreen": false
+    },
+    {
+      "id": "sorryApology",
+      "category": "essentials",
+      "hanzi": "对不起",
+      "pinyin": "duì bu qǐ",
+      "phonetic": "dway-boo-chee",
+      "english": "Sorry",
+      "note": "For actual mistakes rather than passing politeness.",
+      "showOnScreen": false
+    },
+    {
+      "id": "thisOne",
+      "category": "essentials",
+      "hanzi": "这个",
+      "pinyin": "zhè ge",
+      "phonetic": "juh-guh",
+      "english": "This one",
+      "note": "Use with pointing. The single most useful phrase on this list.",
+      "showOnScreen": false
+    },
+    {
+      "id": "noChinese",
+      "category": "essentials",
+      "hanzi": "我不会说中文",
+      "pinyin": "wǒ bú huì shuō zhōng wén",
+      "phonetic": "wor boo hway shwor jong-wun",
+      "english": "I don't speak Chinese",
+      "showOnScreen": true
+    },
+    {
+      "id": "dontUnderstand",
+      "category": "essentials",
+      "hanzi": "听不懂",
+      "pinyin": "tīng bu dǒng",
+      "phonetic": "ting boo dong",
+      "english": "I don't understand",
+      "showOnScreen": false
+    },
+    {
+      "id": "myNameIs",
+      "category": "introductions",
+      "hanzi": "我叫 {name}",
+      "pinyin": "wǒ jiào {name}",
+      "phonetic": "wor jyow {name}",
+      "english": "I'm called {name}",
+      "showOnScreen": false
+    },
+    {
+      "id": "niceToMeetYou",
+      "category": "introductions",
+      "hanzi": "很高兴认识你",
+      "pinyin": "hěn gāo xìng rèn shi nǐ",
+      "phonetic": "hun gow-shing run-shir nee",
+      "english": "Nice to meet you",
+      "note": "Worth practising properly before meeting the parents.",
+      "showOnScreen": false
+    },
+    {
+      "id": "vegetarian",
+      "category": "dietary",
+      "hanzi": "我吃素",
+      "pinyin": "wǒ chī sù",
+      "phonetic": "wor chir soo",
+      "english": "I eat vegetarian",
+      "note": "The key phrase. Carries Buddhist associations, so it reads as a commitment rather than a preference.",
+      "showOnScreen": true
+    },
+    {
+      "id": "noMeatNoFish",
+      "category": "dietary",
+      "hanzi": "我不吃肉，不吃鱼",
+      "pinyin": "wǒ bù chī ròu, bù chī yú",
+      "phonetic": "wor boo chir roh, boo chir yoo",
+      "english": "I don't eat meat or fish",
+      "showOnScreen": true
+    },
+    {
+      "id": "doesThisHaveMeat",
+      "category": "dietary",
+      "hanzi": "这个有肉吗？",
+      "pinyin": "zhè ge yǒu ròu ma?",
+      "phonetic": "juh-guh yo roh ma?",
+      "english": "Does this have meat in it?",
+      "showOnScreen": true
+    },
+    {
+      "id": "anyVegetarianDishes",
+      "category": "dietary",
+      "hanzi": "有素菜吗？",
+      "pinyin": "yǒu sù cài ma?",
+      "phonetic": "yo soo-tsai ma?",
+      "english": "Do you have vegetarian dishes?",
+      "showOnScreen": true
+    },
+    {
+      "id": "oneBeer",
+      "category": "dining",
+      "hanzi": "一瓶啤酒，谢谢",
+      "pinyin": "yì píng pí jiǔ, xiè xie",
+      "phonetic": "ee ping pee-jyoh, shyeh-shyeh",
+      "english": "One bottle of beer, please",
+      "showOnScreen": false
+    },
+    {
+      "id": "cheers",
+      "category": "dining",
+      "hanzi": "干杯",
+      "pinyin": "gān bēi",
+      "phonetic": "gan-bay",
+      "english": "Cheers",
+      "showOnScreen": false
+    },
+    {
+      "id": "noAlcohol",
+      "category": "dining",
+      "hanzi": "我不喝酒",
+      "pinyin": "wǒ bù hē jiǔ",
+      "phonetic": "wor boo huh jyoh",
+      "english": "I don't drink alcohol",
+      "note": "Useful when baijiu appears.",
+      "showOnScreen": true
+    },
+    {
+      "id": "delicious",
+      "category": "dining",
+      "hanzi": "很好吃",
+      "pinyin": "hěn hǎo chī",
+      "phonetic": "hun how-chir",
+      "english": "Delicious",
+      "showOnScreen": false
+    },
+    {
+      "id": "imFull",
+      "category": "dining",
+      "hanzi": "我饱了",
+      "pinyin": "wǒ bǎo le",
+      "phonetic": "wor bow luh",
+      "english": "I'm full",
+      "showOnScreen": false
+    },
+    {
+      "id": "thatsEnough",
+      "category": "dining",
+      "hanzi": "够了，谢谢",
+      "pinyin": "gòu le, xiè xie",
+      "phonetic": "go luh, shyeh-shyeh",
+      "english": "That's enough, thank you",
+      "showOnScreen": false
+    },
+    {
+      "id": "howMuch",
+      "category": "outAndAbout",
+      "hanzi": "多少钱？",
+      "pinyin": "duō shao qián?",
+      "phonetic": "dwor-shaow chyen?",
+      "english": "How much?",
+      "showOnScreen": false
+    },
+    {
+      "id": "theBill",
+      "category": "outAndAbout",
+      "hanzi": "买单",
+      "pinyin": "mǎi dān",
+      "phonetic": "my-dan",
+      "english": "The bill",
+      "showOnScreen": false
+    },
+    {
+      "id": "whereIsToilet",
+      "category": "outAndAbout",
+      "hanzi": "洗手间在哪里？",
+      "pinyin": "xǐ shǒu jiān zài nǎ lǐ?",
+      "phonetic": "shee-show-jyen dzai na-lee?",
+      "english": "Where is the toilet?",
+      "showOnScreen": true
+    }
+  ]
+};
+
+  var deckLabels = {};
+  DATA.categories.forEach(function (c) { deckLabels[c.id] = c.label; });
+
+  var el = {};
+  ['start', 'round', 'done', 'name-input', 'deck-list', 'start-btn', 'progress',
+   'score-hit', 'score-miss', 'card-deck', 'card-english', 'answer', 'card-glyphs',
+   'card-pinyin', 'card-phonetic', 'footnotes', 'card-note', 'card-flag', 'flip-btn',
+   'grade', 'hit-btn', 'miss-btn', 'quit-btn', 'verdict', 'summary', 'recap', 'again-btn'
+  ].forEach(function (id) { el[id] = document.getElementById(id); });
+
+  var NAME_KEY = 'mandarin-drill.name';
+
+  var state = {
+    queue: [],   // cards left in the current pass
+    retry: [],   // cards missed this pass, replayed once the pass runs out
+    current: null,
+    pass: 0,     // 0 = first time through, 1+ = repeat passes
+    passSize: 0,
+    seen: 0,
+    hits: 0,
+    misses: 0,
+    missed: {},  // id -> card, everything missed at least once this round
+    revealed: false
+  };
+
+  function storedName() {
+    try { return localStorage.getItem(NAME_KEY) || ''; } catch (e) { return ''; }
+  }
+
+  function rememberName(value) {
+    try { localStorage.setItem(NAME_KEY, value); } catch (e) { /* storage blocked */ }
+  }
+
+  function shuffle(items) {
+    var out = items.slice();
+    for (var i = out.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var swap = out[i];
+      out[i] = out[j];
+      out[j] = swap;
+    }
+    return out;
+  }
+
+  function fillName(text, name) { return text.replace(/\{name\}/g, name); }
+
+  function buildDeckChoices() {
+    DATA.categories.forEach(function (category) {
+      var count = DATA.phrases.filter(function (p) { return p.category === category.id; }).length;
+
+      var row = document.createElement('label');
+      row.className = 'deck';
+
+      var box = document.createElement('input');
+      box.type = 'checkbox';
+      box.value = category.id;
+      box.checked = true;
+      box.addEventListener('change', syncStart);
+
+      var name = document.createElement('span');
+      name.textContent = category.label;
+
+      var tally = document.createElement('span');
+      tally.className = 'count';
+      tally.textContent = count;
+
+      row.appendChild(box);
+      row.appendChild(name);
+      row.appendChild(tally);
+      el['deck-list'].appendChild(row);
+    });
+  }
+
+  function chosenDecks() {
+    return Array.prototype.map.call(
+      el['deck-list'].querySelectorAll('input:checked'),
+      function (box) { return box.value; }
+    );
+  }
+
+  function syncStart() { el['start-btn'].disabled = chosenDecks().length === 0; }
+
+  function buildDeck() {
+    var decks = chosenDecks();
+    var name = el['name-input'].value.trim() || '[your name]';
+    return DATA.phrases
+      .filter(function (p) { return decks.indexOf(p.category) !== -1; })
+      .map(function (p) {
+        return {
+          id: p.id,
+          category: p.category,
+          english: fillName(p.english, name),
+          hanzi: fillName(p.hanzi, name),
+          pinyin: fillName(p.pinyin, name),
+          phonetic: fillName(p.phonetic, name),
+          note: p.note || '',
+          showOnScreen: !!p.showOnScreen
+        };
+      });
+  }
+
+  function show(screen) {
+    el.start.hidden = screen !== 'start';
+    el.round.hidden = screen !== 'round';
+    el.done.hidden = screen !== 'done';
+  }
+
+  // One practice cell per Chinese character; punctuation and any Latin run
+  // (a name, say) get a plain cell so the grid stays a writing grid.
+  function renderGlyphs(hanzi) {
+    var box = el['card-glyphs'];
+    box.textContent = '';
+
+    var tokens = hanzi.match(/[一-鿿]|[^一-鿿]+/g) || [];
+    tokens.forEach(function (token) {
+      var text = /[一-鿿]/.test(token) ? token : token.trim();
+      if (!text) return;
+
+      var cell = document.createElement('span');
+      cell.className = 'cell';
+      if (!/[一-鿿]/.test(text)) {
+        cell.className += /[a-zA-Z]/.test(text) ? ' cell-plain cell-latin' : ' cell-plain';
+      }
+      cell.textContent = text;
+      box.appendChild(cell);
+    });
+  }
+
+  function startRound() {
+    var deck = buildDeck();
+    if (!deck.length) return;
+
+    rememberName(el['name-input'].value.trim());
+
+    state.queue = shuffle(deck);
+    state.retry = [];
+    state.pass = 0;
+    state.passSize = state.queue.length;
+    state.seen = 0;
+    state.hits = 0;
+    state.misses = 0;
+    state.missed = {};
+
+    show('round');
+    nextCard();
+  }
+
+  function nextCard() {
+    if (!state.queue.length) {
+      if (!state.retry.length) return finishRound();
+      state.pass += 1;
+      state.queue = shuffle(state.retry);
+      state.retry = [];
+      state.passSize = state.queue.length;
+      state.seen = 0;
+    }
+
+    state.current = state.queue.shift();
+    state.seen += 1;
+    state.revealed = false;
+    renderCard();
+  }
+
+  function pad(n) { return n < 10 ? '0' + n : String(n); }
+
+  function renderCard() {
+    var card = state.current;
+
+    el['card-deck'].textContent = deckLabels[card.category] || '';
+    el['card-english'].textContent = card.english;
+    el['card-pinyin'].textContent = card.pinyin;
+    el['card-phonetic'].textContent = card.phonetic;
+    renderGlyphs(card.hanzi);
+
+    el['card-note'].textContent = card.note;
+    el['card-note'].hidden = !card.note;
+    el['card-flag'].hidden = !card.showOnScreen;
+    el.footnotes.hidden = !card.note && !card.showOnScreen;
+
+    el.answer.hidden = true;
+    el.grade.hidden = true;
+    el['flip-btn'].hidden = false;
+    el['flip-btn'].focus();
+
+    el.progress.textContent = (state.pass === 0 ? 'Pass 1' : 'Second look') +
+      '  ' + pad(state.seen) + ' / ' + pad(state.passSize);
+    el['score-hit'].textContent = state.hits;
+    el['score-miss'].textContent = state.misses;
+  }
+
+  function reveal() {
+    if (state.revealed) return;
+    state.revealed = true;
+    el.answer.hidden = false;
+    el['flip-btn'].hidden = true;
+    el.grade.hidden = false;
+    el['hit-btn'].focus();
+  }
+
+  function grade(gotIt) {
+    if (!state.revealed) return;
+    if (gotIt) {
+      state.hits += 1;
+    } else {
+      state.misses += 1;
+      state.missed[state.current.id] = state.current;
+      state.retry.push(state.current);
+    }
+    nextCard();
+  }
+
+  function finishRound() {
+    var missed = Object.keys(state.missed).map(function (id) { return state.missed[id]; });
+    var answered = state.hits + state.misses;
+    var unfinished = state.queue.length + state.retry.length > 0;
+
+    if (answered === 0) {
+      el.verdict.textContent = 'Ended before you started';
+      el.summary.textContent = 'No cards answered this time.';
+    } else if (unfinished) {
+      el.verdict.textContent = 'Stopped early';
+      el.summary.textContent = state.hits + ' right and ' + state.misses + ' wrong across ' +
+        answered + ' answers.' + (missed.length ? ' Still to nail down:' : '');
+    } else if (missed.length) {
+      el.verdict.textContent = 'Every card, eventually';
+      el.summary.textContent = 'You cleared the deck after ' + state.misses +
+        (state.misses === 1 ? ' slip' : ' slips') + ' across ' + answered +
+        ' answers. These are the ones that fought back:';
+    } else {
+      el.verdict.textContent = 'Clean sweep';
+      el.summary.textContent = answered + ' cards, not a single miss.';
+    }
+
+    el.recap.textContent = '';
+    missed.forEach(function (card) {
+      var li = document.createElement('li');
+
+      var en = document.createElement('span');
+      en.className = 'en';
+      en.textContent = card.english;
+
+      var zh = document.createElement('span');
+      zh.className = 'zh';
+      zh.lang = 'zh-CN';
+      zh.textContent = card.hanzi;
+
+      var rd = document.createElement('span');
+      rd.className = 'rd';
+      rd.textContent = card.pinyin + '  ·  ' + card.phonetic;
+
+      li.appendChild(en);
+      li.appendChild(zh);
+      li.appendChild(rd);
+      el.recap.appendChild(li);
+    });
+
+    show('done');
+    el['again-btn'].focus();
+  }
+
+  el['start-btn'].addEventListener('click', startRound);
+  el['again-btn'].addEventListener('click', function () {
+    show('start');
+    el['start-btn'].focus();
+  });
+  el['flip-btn'].addEventListener('click', reveal);
+  el['hit-btn'].addEventListener('click', function () { grade(true); });
+  el['miss-btn'].addEventListener('click', function () { grade(false); });
+  el['quit-btn'].addEventListener('click', function () { finishRound(); });
+
+  document.addEventListener('keydown', function (event) {
+    if (el.round.hidden) return;
+    if (event.target && event.target.tagName === 'INPUT') return;
+
+    if (!state.revealed && (event.key === ' ' || event.key === 'Enter')) {
+      event.preventDefault();
+      reveal();
+      return;
+    }
+    if (state.revealed && event.key === '1') grade(false);
+    if (state.revealed && event.key === '2') grade(true);
+  });
+
+  buildDeckChoices();
+  syncStart();
+  el['name-input'].value = storedName();
+})();
+</script>

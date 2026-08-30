@@ -29,3 +29,16 @@ file is blocked under `file://`). After editing the JSON, run:
 ```
 node tools/build-phrases.mjs
 ```
+
+## Hosted version
+
+The same drill is published as a Claude Artifact:
+<https://claude.ai/code/artifact/522ab145-145f-4b45-abef-27e333009a9c>
+
+It is a single self-contained page built from `artifact/template.html` with the
+phrase data inlined. After editing `phrases.json` (or the template), rebuild and
+republish it:
+
+```
+node tools/build-artifact.mjs
+```
