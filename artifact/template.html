@@ -225,6 +225,9 @@
      handwriting is drilled on. One cell per character, wrapping as needed. */
   .glyphs { display: flex; flex-wrap: wrap; gap: 5px; }
 
+  /* A bracketed aside stays on one line so its brackets never split across rows. */
+  .glyph-group { display: flex; gap: 5px; }
+
   .cell {
     position: relative;
     width: 3.2rem;
@@ -500,15 +503,24 @@
   }
 
   // One practice cell per Chinese character; punctuation and any Latin run
-  // (a name, say) get a plain cell so the grid stays a writing grid.
+  // (a name, say) get a plain cell so the grid stays a writing grid. An
+  // optional part in brackets is held together so it wraps as one unit.
   function renderGlyphs(hanzi) {
     var box = el['card-glyphs'];
     box.textContent = '';
 
     var tokens = hanzi.match(/[一-鿿]|[^一-鿿]+/g) || [];
+    var target = box;
+
     tokens.forEach(function (token) {
       var text = /[一-鿿]/.test(token) ? token : token.trim();
       if (!text) return;
+
+      if (/^[（(]$/.test(text)) {
+        target = document.createElement('span');
+        target.className = 'glyph-group';
+        box.appendChild(target);
+      }
 
       var cell = document.createElement('span');
       cell.className = 'cell';
@@ -516,7 +528,9 @@
         cell.className += /[a-zA-Z]/.test(text) ? ' cell-plain cell-latin' : ' cell-plain';
       }
       cell.textContent = text;
-      box.appendChild(cell);
+      target.appendChild(cell);
+
+      if (/^[）)]$/.test(text)) target = box;
     });
   }
 

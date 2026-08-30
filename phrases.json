@@ -34,11 +34,11 @@
     {
       "id": "excuseMe",
       "category": "essentials",
-      "hanzi": "不好意思",
-      "pinyin": "bù hǎo yì si",
-      "phonetic": "boo how yee-suh",
-      "english": "Sorry / excuse me",
-      "note": "Covers almost every minor social situation. Default to this one.",
+      "hanzi": "不好意思，借过（一下）",
+      "pinyin": "bù hǎo yì si, jiè guò (yí xià)",
+      "phonetic": "boo how yee-suh, jyeh gwor (ee shyah)",
+      "english": "Sorry / excuse me — let me past",
+      "note": "Covers almost every minor social situation — default to this one. 借过（一下） is the part that asks someone to let you through; 一下 just softens it.",
       "showOnScreen": false
     },
     {
